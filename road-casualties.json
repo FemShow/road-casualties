@@ -56,7 +56,7 @@
         },
         "Annual Casualties": {
             "label": "Annual Casualties",
-            "type": "dimension",
+            "type": "observation",
             "code_list": {
                 "title": "Annual Casualties",
                 "categories": [
