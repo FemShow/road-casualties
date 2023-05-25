@@ -34,8 +34,27 @@ for row in worksheet.iter_rows(min_row=1, max_row=1):
             for row_index in range(3, worksheet.max_row + 1):
                 worksheet.cell(row=row_index, column=column_index).value = cell.value
 
+
+# Loop through rows
+for row in worksheet.iter_rows(min_row=1, max_row=worksheet.max_row):
+    # Check the value in column 0 for "not geo coded"
+    if row[0].value == "not geo coded":
+        # Move the value in column 0 to column 1
+        row[1].value = row[0].value
+        # Replace the value in column 0 with "E00000000"
+        row[0].value = "E00000000"
+
+    # Fill blank cells with zeros
+    for cell in row:
+        if cell.value is None:
+            cell.value = 0
+
+        # Convert numbers to integers
+        if isinstance(cell.value, (int, float)):
+            cell.value = int(cell.value)
+
 # Delete the first row
 worksheet.delete_rows(1)
 
 # Save workbook
-workbook.save("/Users/femisokoya/Documents/GitHub/road_length/road-casualties/example1.xlsx")
+workbook.save("/Users/femisokoya/Documents/GitHub/road-casualties/example1.xlsx")
