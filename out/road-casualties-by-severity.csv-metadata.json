@@ -26,34 +26,17 @@
                         "required": true
                     },
                     {
-                        "titles": "Fatal",
-                        "name": "fatal",
-                        "aboutUrl": "road-casualties-by-severity.csv#obs/{lsoa_code},{year}@number-of-people-killed-on-the-roads",
-                        "propertyUrl": "road-casualties-by-severity.csv#measure/number-of-people-killed-on-the-roads",
-                        "datatype": "integer",
+                        "titles": "Severity",
+                        "name": "severity",
+                        "propertyUrl": "road-casualties-by-severity.csv#dimension/severity",
+                        "valueUrl": "casualty-severity.csv#{+severity}",
                         "required": true
                     },
                     {
-                        "titles": "Serious",
-                        "name": "serious",
-                        "aboutUrl": "road-casualties-by-severity.csv#obs/{lsoa_code},{year}@number-of-people-seriously-injured-on-the-roads",
-                        "propertyUrl": "road-casualties-by-severity.csv#measure/number-of-people-seriously-injured-on-the-roads",
-                        "datatype": "integer",
-                        "required": true
-                    },
-                    {
-                        "titles": "Slight",
-                        "name": "slight",
-                        "aboutUrl": "road-casualties-by-severity.csv#obs/{lsoa_code},{year}@number-of-people-slightly-injured-on-the-roads",
-                        "propertyUrl": "road-casualties-by-severity.csv#measure/number-of-people-slightly-injured-on-the-roads",
-                        "datatype": "integer",
-                        "required": true
-                    },
-                    {
-                        "titles": "Annual Casualties",
-                        "name": "annual_casualties",
-                        "aboutUrl": "road-casualties-by-severity.csv#obs/{lsoa_code},{year}@total-number-of-casualties-for-the-year",
-                        "propertyUrl": "road-casualties-by-severity.csv#measure/total-number-of-casualties-for-the-year",
+                        "titles": "Casualty Numbers",
+                        "name": "casualty_numbers",
+                        "aboutUrl": "road-casualties-by-severity.csv#obs/{lsoa_code},{year},{severity}@number-of-people-injured-or-killed-on-the-roads",
+                        "propertyUrl": "road-casualties-by-severity.csv#measure/number-of-people-injured-or-killed-on-the-roads",
                         "datatype": "integer",
                         "required": true
                     },
@@ -70,194 +53,57 @@
                         "valueUrl": "road-casualties-by-severity.csv#slice/cross-measures"
                     },
                     {
-                        "name": "virt_obs_fatal",
+                        "name": "virt_obs_casualty_numbers",
                         "virtual": true,
                         "propertyUrl": "qb:observation",
-                        "valueUrl": "road-casualties-by-severity.csv#obs/{lsoa_code},{year}@number-of-people-killed-on-the-roads"
+                        "valueUrl": "road-casualties-by-severity.csv#obs/{lsoa_code},{year},{severity}@number-of-people-injured-or-killed-on-the-roads"
                     },
                     {
-                        "name": "virt_obs_fatal_meas",
+                        "name": "virt_obs_casualty_numbers_meas",
                         "virtual": true,
-                        "aboutUrl": "road-casualties-by-severity.csv#obs/{lsoa_code},{year}@number-of-people-killed-on-the-roads",
+                        "aboutUrl": "road-casualties-by-severity.csv#obs/{lsoa_code},{year},{severity}@number-of-people-injured-or-killed-on-the-roads",
                         "propertyUrl": "qb:measureType",
-                        "valueUrl": "road-casualties-by-severity.csv#measure/number-of-people-killed-on-the-roads"
+                        "valueUrl": "road-casualties-by-severity.csv#measure/number-of-people-injured-or-killed-on-the-roads"
                     },
                     {
-                        "name": "virt_obs_fatal_unit",
+                        "name": "virt_obs_casualty_numbers_unit",
                         "virtual": true,
-                        "aboutUrl": "road-casualties-by-severity.csv#obs/{lsoa_code},{year}@number-of-people-killed-on-the-roads",
+                        "aboutUrl": "road-casualties-by-severity.csv#obs/{lsoa_code},{year},{severity}@number-of-people-injured-or-killed-on-the-roads",
                         "propertyUrl": "http://purl.org/linked-data/sdmx/2009/attribute#unitMeasure",
                         "valueUrl": "road-casualties-by-severity.csv#unit/number"
                     },
                     {
-                        "name": "virt_dim_fatal_lsoa_code",
+                        "name": "virt_dim_casualty_numbers_lsoa_code",
                         "virtual": true,
-                        "aboutUrl": "road-casualties-by-severity.csv#obs/{lsoa_code},{year}@number-of-people-killed-on-the-roads",
+                        "aboutUrl": "road-casualties-by-severity.csv#obs/{lsoa_code},{year},{severity}@number-of-people-injured-or-killed-on-the-roads",
                         "propertyUrl": "road-casualties-by-severity.csv#dimension/statistical-geography",
                         "valueUrl": "http://statistics.data.gov.uk/id/statistical-geography/{+lsoa_code}"
                     },
                     {
-                        "name": "virt_dim_fatal_year",
+                        "name": "virt_dim_casualty_numbers_year",
                         "virtual": true,
-                        "aboutUrl": "road-casualties-by-severity.csv#obs/{lsoa_code},{year}@number-of-people-killed-on-the-roads",
+                        "aboutUrl": "road-casualties-by-severity.csv#obs/{lsoa_code},{year},{severity}@number-of-people-injured-or-killed-on-the-roads",
                         "propertyUrl": "road-casualties-by-severity.csv#dimension/year",
                         "valueUrl": "year.csv#{+year}"
                     },
                     {
-                        "name": "virt_obs_fatal_type",
+                        "name": "virt_dim_casualty_numbers_severity",
                         "virtual": true,
-                        "aboutUrl": "road-casualties-by-severity.csv#obs/{lsoa_code},{year}@number-of-people-killed-on-the-roads",
+                        "aboutUrl": "road-casualties-by-severity.csv#obs/{lsoa_code},{year},{severity}@number-of-people-injured-or-killed-on-the-roads",
+                        "propertyUrl": "road-casualties-by-severity.csv#dimension/severity",
+                        "valueUrl": "casualty-severity.csv#{+severity}"
+                    },
+                    {
+                        "name": "virt_obs_casualty_numbers_type",
+                        "virtual": true,
+                        "aboutUrl": "road-casualties-by-severity.csv#obs/{lsoa_code},{year},{severity}@number-of-people-injured-or-killed-on-the-roads",
                         "propertyUrl": "rdf:type",
                         "valueUrl": "qb:Observation"
                     },
                     {
-                        "name": "virt_dataSet_fatal",
+                        "name": "virt_dataSet_casualty_numbers",
                         "virtual": true,
-                        "aboutUrl": "road-casualties-by-severity.csv#obs/{lsoa_code},{year}@number-of-people-killed-on-the-roads",
-                        "propertyUrl": "qb:dataSet",
-                        "valueUrl": "road-casualties-by-severity.csv#dataset"
-                    },
-                    {
-                        "name": "virt_obs_serious",
-                        "virtual": true,
-                        "propertyUrl": "qb:observation",
-                        "valueUrl": "road-casualties-by-severity.csv#obs/{lsoa_code},{year}@number-of-people-seriously-injured-on-the-roads"
-                    },
-                    {
-                        "name": "virt_obs_serious_meas",
-                        "virtual": true,
-                        "aboutUrl": "road-casualties-by-severity.csv#obs/{lsoa_code},{year}@number-of-people-seriously-injured-on-the-roads",
-                        "propertyUrl": "qb:measureType",
-                        "valueUrl": "road-casualties-by-severity.csv#measure/number-of-people-seriously-injured-on-the-roads"
-                    },
-                    {
-                        "name": "virt_obs_serious_unit",
-                        "virtual": true,
-                        "aboutUrl": "road-casualties-by-severity.csv#obs/{lsoa_code},{year}@number-of-people-seriously-injured-on-the-roads",
-                        "propertyUrl": "http://purl.org/linked-data/sdmx/2009/attribute#unitMeasure",
-                        "valueUrl": "road-casualties-by-severity.csv#unit/number"
-                    },
-                    {
-                        "name": "virt_dim_serious_lsoa_code",
-                        "virtual": true,
-                        "aboutUrl": "road-casualties-by-severity.csv#obs/{lsoa_code},{year}@number-of-people-seriously-injured-on-the-roads",
-                        "propertyUrl": "road-casualties-by-severity.csv#dimension/statistical-geography",
-                        "valueUrl": "http://statistics.data.gov.uk/id/statistical-geography/{+lsoa_code}"
-                    },
-                    {
-                        "name": "virt_dim_serious_year",
-                        "virtual": true,
-                        "aboutUrl": "road-casualties-by-severity.csv#obs/{lsoa_code},{year}@number-of-people-seriously-injured-on-the-roads",
-                        "propertyUrl": "road-casualties-by-severity.csv#dimension/year",
-                        "valueUrl": "year.csv#{+year}"
-                    },
-                    {
-                        "name": "virt_obs_serious_type",
-                        "virtual": true,
-                        "aboutUrl": "road-casualties-by-severity.csv#obs/{lsoa_code},{year}@number-of-people-seriously-injured-on-the-roads",
-                        "propertyUrl": "rdf:type",
-                        "valueUrl": "qb:Observation"
-                    },
-                    {
-                        "name": "virt_dataSet_serious",
-                        "virtual": true,
-                        "aboutUrl": "road-casualties-by-severity.csv#obs/{lsoa_code},{year}@number-of-people-seriously-injured-on-the-roads",
-                        "propertyUrl": "qb:dataSet",
-                        "valueUrl": "road-casualties-by-severity.csv#dataset"
-                    },
-                    {
-                        "name": "virt_obs_slight",
-                        "virtual": true,
-                        "propertyUrl": "qb:observation",
-                        "valueUrl": "road-casualties-by-severity.csv#obs/{lsoa_code},{year}@number-of-people-slightly-injured-on-the-roads"
-                    },
-                    {
-                        "name": "virt_obs_slight_meas",
-                        "virtual": true,
-                        "aboutUrl": "road-casualties-by-severity.csv#obs/{lsoa_code},{year}@number-of-people-slightly-injured-on-the-roads",
-                        "propertyUrl": "qb:measureType",
-                        "valueUrl": "road-casualties-by-severity.csv#measure/number-of-people-slightly-injured-on-the-roads"
-                    },
-                    {
-                        "name": "virt_obs_slight_unit",
-                        "virtual": true,
-                        "aboutUrl": "road-casualties-by-severity.csv#obs/{lsoa_code},{year}@number-of-people-slightly-injured-on-the-roads",
-                        "propertyUrl": "http://purl.org/linked-data/sdmx/2009/attribute#unitMeasure",
-                        "valueUrl": "road-casualties-by-severity.csv#unit/number"
-                    },
-                    {
-                        "name": "virt_dim_slight_lsoa_code",
-                        "virtual": true,
-                        "aboutUrl": "road-casualties-by-severity.csv#obs/{lsoa_code},{year}@number-of-people-slightly-injured-on-the-roads",
-                        "propertyUrl": "road-casualties-by-severity.csv#dimension/statistical-geography",
-                        "valueUrl": "http://statistics.data.gov.uk/id/statistical-geography/{+lsoa_code}"
-                    },
-                    {
-                        "name": "virt_dim_slight_year",
-                        "virtual": true,
-                        "aboutUrl": "road-casualties-by-severity.csv#obs/{lsoa_code},{year}@number-of-people-slightly-injured-on-the-roads",
-                        "propertyUrl": "road-casualties-by-severity.csv#dimension/year",
-                        "valueUrl": "year.csv#{+year}"
-                    },
-                    {
-                        "name": "virt_obs_slight_type",
-                        "virtual": true,
-                        "aboutUrl": "road-casualties-by-severity.csv#obs/{lsoa_code},{year}@number-of-people-slightly-injured-on-the-roads",
-                        "propertyUrl": "rdf:type",
-                        "valueUrl": "qb:Observation"
-                    },
-                    {
-                        "name": "virt_dataSet_slight",
-                        "virtual": true,
-                        "aboutUrl": "road-casualties-by-severity.csv#obs/{lsoa_code},{year}@number-of-people-slightly-injured-on-the-roads",
-                        "propertyUrl": "qb:dataSet",
-                        "valueUrl": "road-casualties-by-severity.csv#dataset"
-                    },
-                    {
-                        "name": "virt_obs_annual_casualties",
-                        "virtual": true,
-                        "propertyUrl": "qb:observation",
-                        "valueUrl": "road-casualties-by-severity.csv#obs/{lsoa_code},{year}@total-number-of-casualties-for-the-year"
-                    },
-                    {
-                        "name": "virt_obs_annual_casualties_meas",
-                        "virtual": true,
-                        "aboutUrl": "road-casualties-by-severity.csv#obs/{lsoa_code},{year}@total-number-of-casualties-for-the-year",
-                        "propertyUrl": "qb:measureType",
-                        "valueUrl": "road-casualties-by-severity.csv#measure/total-number-of-casualties-for-the-year"
-                    },
-                    {
-                        "name": "virt_obs_annual_casualties_unit",
-                        "virtual": true,
-                        "aboutUrl": "road-casualties-by-severity.csv#obs/{lsoa_code},{year}@total-number-of-casualties-for-the-year",
-                        "propertyUrl": "http://purl.org/linked-data/sdmx/2009/attribute#unitMeasure",
-                        "valueUrl": "road-casualties-by-severity.csv#unit/number"
-                    },
-                    {
-                        "name": "virt_dim_annual_casualties_lsoa_code",
-                        "virtual": true,
-                        "aboutUrl": "road-casualties-by-severity.csv#obs/{lsoa_code},{year}@total-number-of-casualties-for-the-year",
-                        "propertyUrl": "road-casualties-by-severity.csv#dimension/statistical-geography",
-                        "valueUrl": "http://statistics.data.gov.uk/id/statistical-geography/{+lsoa_code}"
-                    },
-                    {
-                        "name": "virt_dim_annual_casualties_year",
-                        "virtual": true,
-                        "aboutUrl": "road-casualties-by-severity.csv#obs/{lsoa_code},{year}@total-number-of-casualties-for-the-year",
-                        "propertyUrl": "road-casualties-by-severity.csv#dimension/year",
-                        "valueUrl": "year.csv#{+year}"
-                    },
-                    {
-                        "name": "virt_obs_annual_casualties_type",
-                        "virtual": true,
-                        "aboutUrl": "road-casualties-by-severity.csv#obs/{lsoa_code},{year}@total-number-of-casualties-for-the-year",
-                        "propertyUrl": "rdf:type",
-                        "valueUrl": "qb:Observation"
-                    },
-                    {
-                        "name": "virt_dataSet_annual_casualties",
-                        "virtual": true,
-                        "aboutUrl": "road-casualties-by-severity.csv#obs/{lsoa_code},{year}@total-number-of-casualties-for-the-year",
+                        "aboutUrl": "road-casualties-by-severity.csv#obs/{lsoa_code},{year},{severity}@number-of-people-injured-or-killed-on-the-roads",
                         "propertyUrl": "qb:dataSet",
                         "valueUrl": "road-casualties-by-severity.csv#dataset"
                     }
@@ -269,84 +115,60 @@
                             "resource": "year.csv",
                             "columnReference": "uri_identifier"
                         }
+                    },
+                    {
+                        "columnReference": "severity",
+                        "reference": {
+                            "resource": "casualty-severity.csv",
+                            "columnReference": "uri_identifier"
+                        }
                     }
                 ],
                 "primaryKey": [
                     "lsoa_code",
-                    "year"
+                    "year",
+                    "severity"
                 ],
-                "aboutUrl": "road-casualties-by-severity.csv#slice/{lsoa_code},{year}"
+                "aboutUrl": "road-casualties-by-severity.csv#slice/{lsoa_code},{year},{severity}"
             }
         },
         {
             "url": "year.csv",
             "tableSchema": "year.table.json",
             "suppressOutput": true
+        },
+        {
+            "url": "casualty-severity.csv",
+            "tableSchema": "casualty-severity.table.json",
+            "suppressOutput": true
         }
     ],
     "rdfs:seeAlso": [
         {
-            "@id": "road-casualties-by-severity.csv#component/number-of-people-slightly-injured-on-the-roads",
+            "@id": "road-casualties-by-severity.csv#class/severity",
             "@type": [
-                "http://www.w3.org/2000/01/rdf-schema#Resource",
-                "http://purl.org/linked-data/cube#ComponentSpecification",
-                "http://purl.org/linked-data/cube#ComponentSet"
+                "http://www.w3.org/2000/01/rdf-schema#Class",
+                "http://www.w3.org/2000/01/rdf-schema#Resource"
+            ]
+        },
+        {
+            "@id": "road-casualties-by-severity.csv#csvcubed-build-activity",
+            "@type": [
+                "http://www.w3.org/ns/prov#Activity",
+                "http://www.w3.org/2000/01/rdf-schema#Resource"
             ],
-            "http://purl.org/linked-data/cube#componentProperty": [
+            "http://www.w3.org/ns/prov#used": [
                 {
-                    "@id": "road-casualties-by-severity.csv#measure/number-of-people-slightly-injured-on-the-roads"
-                }
-            ],
-            "http://purl.org/linked-data/cube#measure": [
-                {
-                    "@id": "road-casualties-by-severity.csv#measure/number-of-people-slightly-injured-on-the-roads"
-                }
-            ],
-            "http://purl.org/linked-data/cube#order": [
-                {
-                    "@value": 9
+                    "@id": "https://github.com/GSS-Cogs/csvcubed/releases/tag/v0.4.2"
                 }
             ]
         },
         {
-            "@id": "road-casualties-by-severity.csv#class/year",
+            "@id": "road-casualties-by-severity.csv#slice/cross-measures",
             "@type": [
-                "http://www.w3.org/2000/01/rdf-schema#Resource",
-                "http://www.w3.org/2000/01/rdf-schema#Class"
-            ]
-        },
-        {
-            "@id": "road-casualties-by-severity.csv#structure",
-            "@type": [
-                "http://purl.org/linked-data/cube#DataStructureDefinition",
-                "http://www.w3.org/2000/01/rdf-schema#Resource",
-                "http://purl.org/linked-data/cube#ComponentSet"
-            ],
-            "http://purl.org/linked-data/cube#component": [
-                {
-                    "@id": "road-casualties-by-severity.csv#component/number-of-people-seriously-injured-on-the-roads"
-                },
-                {
-                    "@id": "road-casualties-by-severity.csv#component/measure-type"
-                },
-                {
-                    "@id": "road-casualties-by-severity.csv#component/number-of-people-killed-on-the-roads"
-                },
-                {
-                    "@id": "road-casualties-by-severity.csv#component/number-of-people-slightly-injured-on-the-roads"
-                },
-                {
-                    "@id": "road-casualties-by-severity.csv#component/statistical-geography"
-                },
-                {
-                    "@id": "road-casualties-by-severity.csv#component/total-number-of-casualties-for-the-year"
-                },
-                {
-                    "@id": "road-casualties-by-severity.csv#component/year"
-                },
-                {
-                    "@id": "road-casualties-by-severity.csv#component/unit"
-                }
+                "http://purl.org/linked-data/cube#SliceKey",
+                "http://purl.org/linked-data/cube#ComponentSet",
+                "http://www.w3.org/2000/01/rdf-schema#Resource"
             ],
             "http://purl.org/linked-data/cube#componentProperty": [
                 {
@@ -356,22 +178,157 @@
                     "@id": "road-casualties-by-severity.csv#dimension/year"
                 },
                 {
-                    "@id": "road-casualties-by-severity.csv#measure/number-of-people-killed-on-the-roads"
+                    "@id": "road-casualties-by-severity.csv#dimension/severity"
+                }
+            ]
+        },
+        {
+            "@id": "road-casualties-by-severity.csv#component/year",
+            "@type": [
+                "http://purl.org/linked-data/cube#ComponentSet",
+                "http://www.w3.org/2000/01/rdf-schema#Resource",
+                "http://purl.org/linked-data/cube#ComponentSpecification"
+            ],
+            "http://purl.org/linked-data/cube#componentProperty": [
+                {
+                    "@id": "road-casualties-by-severity.csv#dimension/year"
+                }
+            ],
+            "http://purl.org/linked-data/cube#dimension": [
+                {
+                    "@id": "road-casualties-by-severity.csv#dimension/year"
+                }
+            ],
+            "http://purl.org/linked-data/cube#order": [
+                {
+                    "@value": 2
+                }
+            ]
+        },
+        {
+            "@id": "road-casualties-by-severity.csv#component/number-of-people-injured-or-killed-on-the-roads",
+            "@type": [
+                "http://purl.org/linked-data/cube#ComponentSet",
+                "http://www.w3.org/2000/01/rdf-schema#Resource",
+                "http://purl.org/linked-data/cube#ComponentSpecification"
+            ],
+            "http://purl.org/linked-data/cube#componentProperty": [
+                {
+                    "@id": "road-casualties-by-severity.csv#measure/number-of-people-injured-or-killed-on-the-roads"
+                }
+            ],
+            "http://purl.org/linked-data/cube#measure": [
+                {
+                    "@id": "road-casualties-by-severity.csv#measure/number-of-people-injured-or-killed-on-the-roads"
+                }
+            ],
+            "http://purl.org/linked-data/cube#order": [
+                {
+                    "@value": 6
+                }
+            ]
+        },
+        {
+            "@id": "road-casualties-by-severity.csv#component/statistical-geography",
+            "@type": [
+                "http://purl.org/linked-data/cube#ComponentSet",
+                "http://www.w3.org/2000/01/rdf-schema#Resource",
+                "http://purl.org/linked-data/cube#ComponentSpecification"
+            ],
+            "http://purl.org/linked-data/cube#componentProperty": [
+                {
+                    "@id": "road-casualties-by-severity.csv#dimension/statistical-geography"
+                }
+            ],
+            "http://purl.org/linked-data/cube#dimension": [
+                {
+                    "@id": "road-casualties-by-severity.csv#dimension/statistical-geography"
+                }
+            ],
+            "http://purl.org/linked-data/cube#order": [
+                {
+                    "@value": 1
+                }
+            ]
+        },
+        {
+            "@id": "road-casualties-by-severity.csv#class/statistical-geography",
+            "@type": [
+                "http://www.w3.org/2000/01/rdf-schema#Class",
+                "http://www.w3.org/2000/01/rdf-schema#Resource"
+            ]
+        },
+        {
+            "@id": "road-casualties-by-severity.csv#dimension/severity",
+            "@type": [
+                "http://purl.org/linked-data/cube#ComponentProperty",
+                "http://purl.org/linked-data/cube#DimensionProperty",
+                "http://www.w3.org/2000/01/rdf-schema#Resource",
+                "http://purl.org/linked-data/cube#CodedProperty",
+                "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
+            ],
+            "http://purl.org/linked-data/cube#codeList": [
+                {
+                    "@id": "casualty-severity.csv#code-list"
+                }
+            ],
+            "http://www.w3.org/2000/01/rdf-schema#label": [
+                {
+                    "@language": "en",
+                    "@value": "Severity"
+                }
+            ],
+            "http://www.w3.org/2000/01/rdf-schema#range": [
+                {
+                    "@id": "road-casualties-by-severity.csv#class/severity"
+                }
+            ]
+        },
+        {
+            "@id": "road-casualties-by-severity.csv#structure",
+            "@type": [
+                "http://purl.org/linked-data/cube#ComponentSet",
+                "http://purl.org/linked-data/cube#DataStructureDefinition",
+                "http://www.w3.org/2000/01/rdf-schema#Resource"
+            ],
+            "http://purl.org/linked-data/cube#component": [
+                {
+                    "@id": "road-casualties-by-severity.csv#component/unit"
                 },
                 {
-                    "@id": "road-casualties-by-severity.csv#measure/number-of-people-slightly-injured-on-the-roads"
+                    "@id": "road-casualties-by-severity.csv#component/severity"
+                },
+                {
+                    "@id": "road-casualties-by-severity.csv#component/measure-type"
+                },
+                {
+                    "@id": "road-casualties-by-severity.csv#component/year"
+                },
+                {
+                    "@id": "road-casualties-by-severity.csv#component/number-of-people-injured-or-killed-on-the-roads"
+                },
+                {
+                    "@id": "road-casualties-by-severity.csv#component/statistical-geography"
+                }
+            ],
+            "http://purl.org/linked-data/cube#componentProperty": [
+                {
+                    "@id": "road-casualties-by-severity.csv#dimension/statistical-geography"
+                },
+                {
+                    "@id": "road-casualties-by-severity.csv#dimension/severity"
+                },
+                {
+                    "@id": "road-casualties-by-severity.csv#dimension/year"
+                },
+                {
+                    "@id": "road-casualties-by-severity.csv#measure/number-of-people-injured-or-killed-on-the-roads"
                 },
                 {
                     "@id": "http://purl.org/linked-data/cube#measureType"
                 },
                 {
                     "@id": "http://purl.org/linked-data/sdmx/2009/attribute#unitMeasure"
-                },
-                {
-                    "@id": "road-casualties-by-severity.csv#measure/total-number-of-casualties-for-the-year"
-                },
-                {
-                    "@id": "road-casualties-by-severity.csv#measure/number-of-people-seriously-injured-on-the-roads"
                 }
             ],
             "http://purl.org/linked-data/cube#sliceKey": [
@@ -381,186 +338,13 @@
             ]
         },
         {
-            "@id": "road-casualties-by-severity.csv#component/number-of-people-seriously-injured-on-the-roads",
-            "@type": [
-                "http://www.w3.org/2000/01/rdf-schema#Resource",
-                "http://purl.org/linked-data/cube#ComponentSpecification",
-                "http://purl.org/linked-data/cube#ComponentSet"
-            ],
-            "http://purl.org/linked-data/cube#componentProperty": [
-                {
-                    "@id": "road-casualties-by-severity.csv#measure/number-of-people-seriously-injured-on-the-roads"
-                }
-            ],
-            "http://purl.org/linked-data/cube#measure": [
-                {
-                    "@id": "road-casualties-by-severity.csv#measure/number-of-people-seriously-injured-on-the-roads"
-                }
-            ],
-            "http://purl.org/linked-data/cube#order": [
-                {
-                    "@value": 7
-                }
-            ]
-        },
-        {
-            "@id": "road-casualties-by-severity.csv#measure/total-number-of-casualties-for-the-year",
-            "@type": [
-                "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property",
-                "http://www.w3.org/2000/01/rdf-schema#Resource",
-                "http://purl.org/linked-data/cube#MeasureProperty",
-                "http://purl.org/linked-data/cube#ComponentProperty"
-            ],
-            "http://www.w3.org/2000/01/rdf-schema#label": [
-                {
-                    "@language": "en",
-                    "@value": "Total number of casualties for the year"
-                }
-            ],
-            "http://www.w3.org/2000/01/rdf-schema#range": [
-                {
-                    "@id": "http://www.w3.org/2001/XMLSchema#integer"
-                }
-            ],
-            "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
-                {
-                    "@id": "https://purl.org/csv-cubed/resources/measures#people"
-                }
-            ]
-        },
-        {
-            "@id": "road-casualties-by-severity.csv#component/total-number-of-casualties-for-the-year",
-            "@type": [
-                "http://www.w3.org/2000/01/rdf-schema#Resource",
-                "http://purl.org/linked-data/cube#ComponentSpecification",
-                "http://purl.org/linked-data/cube#ComponentSet"
-            ],
-            "http://purl.org/linked-data/cube#componentProperty": [
-                {
-                    "@id": "road-casualties-by-severity.csv#measure/total-number-of-casualties-for-the-year"
-                }
-            ],
-            "http://purl.org/linked-data/cube#measure": [
-                {
-                    "@id": "road-casualties-by-severity.csv#measure/total-number-of-casualties-for-the-year"
-                }
-            ],
-            "http://purl.org/linked-data/cube#order": [
-                {
-                    "@value": 11
-                }
-            ]
-        },
-        {
-            "@id": "road-casualties-by-severity.csv#measure/number-of-people-killed-on-the-roads",
-            "@type": [
-                "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property",
-                "http://www.w3.org/2000/01/rdf-schema#Resource",
-                "http://purl.org/linked-data/cube#MeasureProperty",
-                "http://purl.org/linked-data/cube#ComponentProperty"
-            ],
-            "http://www.w3.org/2000/01/rdf-schema#label": [
-                {
-                    "@language": "en",
-                    "@value": "Number of people killed on the roads"
-                }
-            ],
-            "http://www.w3.org/2000/01/rdf-schema#range": [
-                {
-                    "@id": "http://www.w3.org/2001/XMLSchema#integer"
-                }
-            ],
-            "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
-                {
-                    "@id": "https://purl.org/csv-cubed/resources/measures#people"
-                }
-            ]
-        },
-        {
-            "@id": "road-casualties-by-severity.csv#dimension/year",
-            "@type": [
-                "http://purl.org/linked-data/cube#CodedProperty",
-                "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property",
-                "http://purl.org/linked-data/cube#DimensionProperty",
-                "http://www.w3.org/2000/01/rdf-schema#Resource",
-                "http://purl.org/linked-data/cube#ComponentProperty"
-            ],
-            "http://purl.org/linked-data/cube#codeList": [
-                {
-                    "@id": "year.csv#code-list"
-                }
-            ],
-            "http://www.w3.org/2000/01/rdf-schema#label": [
-                {
-                    "@language": "en",
-                    "@value": "Year"
-                }
-            ],
-            "http://www.w3.org/2000/01/rdf-schema#range": [
-                {
-                    "@id": "road-casualties-by-severity.csv#class/year"
-                }
-            ]
-        },
-        {
-            "@id": "road-casualties-by-severity.csv#dimension/statistical-geography",
-            "@type": [
-                "http://purl.org/linked-data/cube#CodedProperty",
-                "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property",
-                "http://purl.org/linked-data/cube#DimensionProperty",
-                "http://www.w3.org/2000/01/rdf-schema#Resource",
-                "http://purl.org/linked-data/cube#ComponentProperty"
-            ],
-            "http://www.w3.org/2000/01/rdf-schema#label": [
-                {
-                    "@language": "en",
-                    "@value": "Statistical Geography"
-                }
-            ],
-            "http://www.w3.org/2000/01/rdf-schema#range": [
-                {
-                    "@id": "road-casualties-by-severity.csv#class/statistical-geography"
-                }
-            ],
-            "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
-                {
-                    "@id": "http://purl.org/linked-data/sdmx/2009/dimension#refArea"
-                }
-            ]
-        },
-        {
-            "@id": "road-casualties-by-severity.csv#measure/number-of-people-slightly-injured-on-the-roads",
-            "@type": [
-                "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property",
-                "http://www.w3.org/2000/01/rdf-schema#Resource",
-                "http://purl.org/linked-data/cube#MeasureProperty",
-                "http://purl.org/linked-data/cube#ComponentProperty"
-            ],
-            "http://www.w3.org/2000/01/rdf-schema#label": [
-                {
-                    "@language": "en",
-                    "@value": "Number of people slightly injured on the roads"
-                }
-            ],
-            "http://www.w3.org/2000/01/rdf-schema#range": [
-                {
-                    "@id": "http://www.w3.org/2001/XMLSchema#integer"
-                }
-            ],
-            "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
-                {
-                    "@id": "https://purl.org/csv-cubed/resources/measures#people"
-                }
-            ]
-        },
-        {
             "@id": "road-casualties-by-severity.csv#dataset",
             "@type": [
-                "http://purl.org/linked-data/cube#Attachable",
-                "http://www.w3.org/ns/dcat#Dataset",
                 "http://www.w3.org/ns/dcat#Resource",
+                "http://www.w3.org/ns/dcat#Dataset",
                 "http://purl.org/linked-data/cube#DataSet",
-                "http://www.w3.org/2000/01/rdf-schema#Resource"
+                "http://www.w3.org/2000/01/rdf-schema#Resource",
+                "http://purl.org/linked-data/cube#Attachable"
             ],
             "http://purl.org/dc/terms/creator": [
                 {
@@ -581,7 +365,7 @@
             "http://purl.org/dc/terms/issued": [
                 {
                     "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
-                    "@value": "2023-05-25T14:50:51.617499"
+                    "@value": "2023-05-31T16:35:11.235580"
                 }
             ],
             "http://purl.org/dc/terms/license": [
@@ -592,7 +376,7 @@
             "http://purl.org/dc/terms/modified": [
                 {
                     "@type": "http://www.w3.org/2001/XMLSchema#dateTime",
-                    "@value": "2023-05-25T14:50:51.617499"
+                    "@value": "2023-05-31T16:35:11.235580"
                 }
             ],
             "http://purl.org/dc/terms/publisher": [
@@ -620,11 +404,7 @@
             "http://www.w3.org/ns/dcat#keyword": [
                 {
                     "@language": "en",
-                    "@value": "Road serious injuries"
-                },
-                {
-                    "@language": "en",
-                    "@value": "Road slight injuries"
+                    "@value": "Road child casualties"
                 },
                 {
                     "@language": "en",
@@ -632,15 +412,19 @@
                 },
                 {
                     "@language": "en",
+                    "@value": "Road deaths"
+                },
+                {
+                    "@language": "en",
+                    "@value": "Road serious injuries"
+                },
+                {
+                    "@language": "en",
                     "@value": "Road Casualties"
                 },
                 {
                     "@language": "en",
-                    "@value": "Road child casualties"
-                },
-                {
-                    "@language": "en",
-                    "@value": "Road deaths"
+                    "@value": "Road slight injuries"
                 }
             ],
             "http://www.w3.org/ns/prov#wasGeneratedBy": [
@@ -650,149 +434,103 @@
             ]
         },
         {
-            "@id": "road-casualties-by-severity.csv#csvcubed-build-activity",
+            "@id": "road-casualties-by-severity.csv#component/severity",
             "@type": [
+                "http://purl.org/linked-data/cube#ComponentSet",
                 "http://www.w3.org/2000/01/rdf-schema#Resource",
-                "http://www.w3.org/ns/prov#Activity"
-            ],
-            "http://www.w3.org/ns/prov#used": [
-                {
-                    "@id": "https://github.com/GSS-Cogs/csvcubed/releases/tag/v0.4.2"
-                }
-            ]
-        },
-        {
-            "@id": "road-casualties-by-severity.csv#component/statistical-geography",
-            "@type": [
-                "http://www.w3.org/2000/01/rdf-schema#Resource",
-                "http://purl.org/linked-data/cube#ComponentSpecification",
-                "http://purl.org/linked-data/cube#ComponentSet"
+                "http://purl.org/linked-data/cube#ComponentSpecification"
             ],
             "http://purl.org/linked-data/cube#componentProperty": [
                 {
-                    "@id": "road-casualties-by-severity.csv#dimension/statistical-geography"
+                    "@id": "road-casualties-by-severity.csv#dimension/severity"
                 }
             ],
             "http://purl.org/linked-data/cube#dimension": [
                 {
-                    "@id": "road-casualties-by-severity.csv#dimension/statistical-geography"
+                    "@id": "road-casualties-by-severity.csv#dimension/severity"
                 }
             ],
             "http://purl.org/linked-data/cube#order": [
-                {
-                    "@value": 1
-                }
-            ]
-        },
-        {
-            "@id": "road-casualties-by-severity.csv#component/number-of-people-killed-on-the-roads",
-            "@type": [
-                "http://www.w3.org/2000/01/rdf-schema#Resource",
-                "http://purl.org/linked-data/cube#ComponentSpecification",
-                "http://purl.org/linked-data/cube#ComponentSet"
-            ],
-            "http://purl.org/linked-data/cube#componentProperty": [
-                {
-                    "@id": "road-casualties-by-severity.csv#measure/number-of-people-killed-on-the-roads"
-                }
-            ],
-            "http://purl.org/linked-data/cube#measure": [
-                {
-                    "@id": "road-casualties-by-severity.csv#measure/number-of-people-killed-on-the-roads"
-                }
-            ],
-            "http://purl.org/linked-data/cube#order": [
-                {
-                    "@value": 5
-                }
-            ]
-        },
-        {
-            "@id": "road-casualties-by-severity.csv#component/measure-type",
-            "@type": [
-                "http://www.w3.org/2000/01/rdf-schema#Resource",
-                "http://purl.org/linked-data/cube#ComponentSpecification",
-                "http://purl.org/linked-data/cube#ComponentSet"
-            ],
-            "http://purl.org/linked-data/cube#componentProperty": [
-                {
-                    "@id": "http://purl.org/linked-data/cube#measureType"
-                }
-            ],
-            "http://purl.org/linked-data/cube#dimension": [
-                {
-                    "@id": "http://purl.org/linked-data/cube#measureType"
-                }
-            ],
-            "http://purl.org/linked-data/cube#order": [
-                {
-                    "@value": 10
-                },
-                {
-                    "@value": 6
-                },
-                {
-                    "@value": 8
-                },
                 {
                     "@value": 3
                 }
             ]
         },
         {
-            "@id": "road-casualties-by-severity.csv#class/statistical-geography",
+            "@id": "road-casualties-by-severity.csv#dimension/statistical-geography",
             "@type": [
+                "http://purl.org/linked-data/cube#ComponentProperty",
+                "http://purl.org/linked-data/cube#DimensionProperty",
                 "http://www.w3.org/2000/01/rdf-schema#Resource",
-                "http://www.w3.org/2000/01/rdf-schema#Class"
-            ]
-        },
-        {
-            "@id": "road-casualties-by-severity.csv#measure/number-of-people-seriously-injured-on-the-roads",
-            "@type": [
-                "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property",
-                "http://www.w3.org/2000/01/rdf-schema#Resource",
-                "http://purl.org/linked-data/cube#MeasureProperty",
-                "http://purl.org/linked-data/cube#ComponentProperty"
+                "http://purl.org/linked-data/cube#CodedProperty",
+                "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
             ],
             "http://www.w3.org/2000/01/rdf-schema#label": [
                 {
                     "@language": "en",
-                    "@value": "Number of people seriously injured on the roads"
+                    "@value": "Statistical Geography"
+                }
+            ],
+            "http://www.w3.org/2000/01/rdf-schema#range": [
+                {
+                    "@id": "road-casualties-by-severity.csv#class/statistical-geography"
+                }
+            ],
+            "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
+                {
+                    "@id": "http://purl.org/linked-data/sdmx/2009/dimension#refArea"
+                }
+            ]
+        },
+        {
+            "@id": "road-casualties-by-severity.csv#component/measure-type",
+            "@type": [
+                "http://purl.org/linked-data/cube#ComponentSet",
+                "http://www.w3.org/2000/01/rdf-schema#Resource",
+                "http://purl.org/linked-data/cube#ComponentSpecification"
+            ],
+            "http://purl.org/linked-data/cube#componentProperty": [
+                {
+                    "@id": "http://purl.org/linked-data/cube#measureType"
+                }
+            ],
+            "http://purl.org/linked-data/cube#dimension": [
+                {
+                    "@id": "http://purl.org/linked-data/cube#measureType"
+                }
+            ],
+            "http://purl.org/linked-data/cube#order": [
+                {
+                    "@value": 4
+                }
+            ]
+        },
+        {
+            "@id": "road-casualties-by-severity.csv#measure/number-of-people-injured-or-killed-on-the-roads",
+            "@type": [
+                "http://purl.org/linked-data/cube#ComponentProperty",
+                "http://purl.org/linked-data/cube#MeasureProperty",
+                "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property",
+                "http://www.w3.org/2000/01/rdf-schema#Resource"
+            ],
+            "http://www.w3.org/2000/01/rdf-schema#label": [
+                {
+                    "@language": "en",
+                    "@value": "Number of people injured or killed on the roads"
                 }
             ],
             "http://www.w3.org/2000/01/rdf-schema#range": [
                 {
                     "@id": "http://www.w3.org/2001/XMLSchema#integer"
                 }
-            ],
-            "http://www.w3.org/2000/01/rdf-schema#subPropertyOf": [
-                {
-                    "@id": "https://purl.org/csv-cubed/resources/measures#people"
-                }
-            ]
-        },
-        {
-            "@id": "road-casualties-by-severity.csv#slice/cross-measures",
-            "@type": [
-                "http://purl.org/linked-data/cube#SliceKey",
-                "http://www.w3.org/2000/01/rdf-schema#Resource",
-                "http://purl.org/linked-data/cube#ComponentSet"
-            ],
-            "http://purl.org/linked-data/cube#componentProperty": [
-                {
-                    "@id": "road-casualties-by-severity.csv#dimension/year"
-                },
-                {
-                    "@id": "road-casualties-by-severity.csv#dimension/statistical-geography"
-                }
             ]
         },
         {
             "@id": "road-casualties-by-severity.csv#component/unit",
             "@type": [
+                "http://purl.org/linked-data/cube#ComponentSet",
                 "http://www.w3.org/2000/01/rdf-schema#Resource",
-                "http://purl.org/linked-data/cube#ComponentSpecification",
-                "http://purl.org/linked-data/cube#ComponentSet"
+                "http://purl.org/linked-data/cube#ComponentSpecification"
             ],
             "http://purl.org/linked-data/cube#attribute": [
                 {
@@ -811,38 +549,48 @@
             ],
             "http://purl.org/linked-data/cube#order": [
                 {
-                    "@value": 4
+                    "@value": 5
                 }
             ]
         },
         {
-            "@id": "road-casualties-by-severity.csv#component/year",
+            "@id": "road-casualties-by-severity.csv#class/year",
             "@type": [
+                "http://www.w3.org/2000/01/rdf-schema#Class",
+                "http://www.w3.org/2000/01/rdf-schema#Resource"
+            ]
+        },
+        {
+            "@id": "road-casualties-by-severity.csv#dimension/year",
+            "@type": [
+                "http://purl.org/linked-data/cube#ComponentProperty",
+                "http://purl.org/linked-data/cube#DimensionProperty",
                 "http://www.w3.org/2000/01/rdf-schema#Resource",
-                "http://purl.org/linked-data/cube#ComponentSpecification",
-                "http://purl.org/linked-data/cube#ComponentSet"
+                "http://purl.org/linked-data/cube#CodedProperty",
+                "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
             ],
-            "http://purl.org/linked-data/cube#componentProperty": [
+            "http://purl.org/linked-data/cube#codeList": [
                 {
-                    "@id": "road-casualties-by-severity.csv#dimension/year"
+                    "@id": "year.csv#code-list"
                 }
             ],
-            "http://purl.org/linked-data/cube#dimension": [
+            "http://www.w3.org/2000/01/rdf-schema#label": [
                 {
-                    "@id": "road-casualties-by-severity.csv#dimension/year"
+                    "@language": "en",
+                    "@value": "Year"
                 }
             ],
-            "http://purl.org/linked-data/cube#order": [
+            "http://www.w3.org/2000/01/rdf-schema#range": [
                 {
-                    "@value": 2
+                    "@id": "road-casualties-by-severity.csv#class/year"
                 }
             ]
         },
         {
             "@id": "road-casualties-by-severity.csv#dependency/year",
             "@type": [
-                "http://www.w3.org/2000/01/rdf-schema#Resource",
-                "http://rdfs.org/ns/void#Dataset"
+                "http://rdfs.org/ns/void#Dataset",
+                "http://www.w3.org/2000/01/rdf-schema#Resource"
             ],
             "http://rdfs.org/ns/void#dataDump": [
                 {
@@ -856,32 +604,28 @@
             ]
         },
         {
+            "@id": "road-casualties-by-severity.csv#dependency/casualty-severity",
+            "@type": [
+                "http://rdfs.org/ns/void#Dataset",
+                "http://www.w3.org/2000/01/rdf-schema#Resource"
+            ],
+            "http://rdfs.org/ns/void#dataDump": [
+                {
+                    "@id": "./casualty-severity.csv-metadata.json"
+                }
+            ],
+            "http://rdfs.org/ns/void#uriSpace": [
+                {
+                    "@value": "casualty-severity.csv#"
+                }
+            ]
+        },
+        {
             "@id": "road-casualties-by-severity.csv#unit/number",
             "@type": [
                 "http://www.ontology-of-units-of-measure.org/resource/om-2/Unit",
-                "http://www.w3.org/2000/01/rdf-schema#Resource",
-                "http://qudt.org/schema/qudt/Unit"
-            ],
-            "http://qudt.org/schema/qudt/isScalingOf": [
-                {
-                    "@id": "http://qudt.org/vocab/unit/NUM"
-                }
-            ],
-            "http://www.ontology-of-units-of-measure.org/resource/om-2/hasFactor": [
-                {
-                    "@type": "http://www.w3.org/2001/XMLSchema#float",
-                    "@value": "1.0"
-                }
-            ],
-            "http://www.ontology-of-units-of-measure.org/resource/om-2/hasUnit": [
-                {
-                    "@id": "http://qudt.org/vocab/unit/NUM"
-                }
-            ],
-            "http://www.w3.org/2000/01/rdf-schema#isDefinedBy": [
-                {
-                    "@id": "http://qudt.org/vocab/unit/NUM"
-                }
+                "http://qudt.org/schema/qudt/Unit",
+                "http://www.w3.org/2000/01/rdf-schema#Resource"
             ],
             "http://www.w3.org/2000/01/rdf-schema#label": [
                 {

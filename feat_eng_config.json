@@ -1,0 +1,66 @@
+{
+    "$schema": "https://purl.org/csv-cubed/qube-config/v1",
+    "title": "Road Casualties by Severity",
+    "description": "Casualties on the roads by severity (Killed/seriously injured or slight injuries) for both child and all casualties",
+    "creator": "https://www.gov.uk/government/organisations/department-for-transport",
+    "publisher": "https://www.gov.uk/government/organisations/department-for-transport",
+    "license": "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+    "keywords": [
+        "Road Casualties",
+        "Road child casualties",
+        "Road deaths",
+        "Road injuries",
+        "Road serious injuries",
+        "Road slight injuries"
+    ],
+    "columns": {
+        "LSOA Code": {
+            "from_template": "statistical-geography"
+        },
+        "LSOA Name": false,
+        "Year": {
+            "type": "dimension"
+        },
+        "Severity": {
+            "type": "dimension",
+            "code_list": {
+                "title": "Casualty Severity",
+                "summary": "Severity of road accident injuries.",
+                "license": "https://creativecommons.org/licenses/by/4.0/",
+                "concepts": [
+                    {
+                        "label": "Annual_Casualties",
+                        "description": "Total injuries in the area for the year fatal and non-fatal.",
+                        "notation": "Annual Casualties"
+                    },
+                    {
+                        "label": "Fatal",
+                        "description": "Injuries resulting in deaths.",
+                        "notation": "Fatal"
+                    },
+                    {
+                        "label": "Serious",
+                        "description": "Injuries that are substantial.",
+                        "notation": "Serious"
+                    },
+                    {
+                        "label": "Slight",
+                        "description": "Injuries that are not substantial.",
+                        "notation": "Slight"
+                    }
+                ],
+                "sort_order": 0
+            }
+        },
+        "Casualty Numbers": {
+            "type": "observations",
+            "measure": {
+                "label": "Number of people injured or killed on the roads"
+            },
+            "data_type": "integer",
+            "unit": {
+                "label": "Number"
+            }
+        }
+    }
+}

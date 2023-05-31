@@ -1,0 +1,5 @@
+Uri Identifier,Label,Notation,Parent Uri Identifier,Sort Priority,Description
+annual-casualties,Annual_Casualties,Annual Casualties,,0,Total injuries in the area for the year fatal and non-fatal.
+fatal,Fatal,Fatal,,1,Injuries resulting in deaths.
+serious,Serious,Serious,,2,Injuries that are substantial.
+slight,Slight,Slight,,3,Injuries that are not substantial.
