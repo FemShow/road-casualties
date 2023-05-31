@@ -1,0 +1,62 @@
+{
+    "$schema": "https://purl.org/csv-cubed/qube-config/v1",
+    "title": "Road Casualties by Severity",
+    "description": "Casualties on the roads by severity (Killed/seriously injured or slight injuries) for both child and all casualties",
+    "creator": "https://www.gov.uk/government/organisations/department-for-transport",
+    "publisher": "https://www.gov.uk/government/organisations/department-for-transport",
+    "license": "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+    "keywords": [
+        "Road Casualties",
+        "Road child casualties",
+        "Road deaths",
+        "Road injuries",
+        "Road serious injuries",
+        "Road slight injuries"
+    ],
+    "columns": {
+        "LSOA Code": {
+            "from_template": "statistical-geography"
+        },
+        "LSOA Name": false,
+        "Year": {
+            "type": "dimension"
+        },
+        "Severity": {
+            "label": "Severity",
+            "type": "dimension",
+            "code_list": {
+                "title": "Severity",
+                "categories": [
+                    {
+                        "code": "Fatal",
+                        "label": "Fatal"
+                    },
+                    {
+                        "code": "Serious",
+                        "label": "Serious"
+                    },
+                    {
+                        "code": "Slight",
+                        "label": "Slight"
+                    },
+                    {
+                        "code": "Annual Casualties",
+                        "label": "Annual Casualties"
+                    }
+                ]
+            }
+        },
+        "Casualty Numbers": {
+            "type": "observations",
+            "measure": {
+                "label": "Number of people injured or killed on the roads",
+                "from_existing": "https://purl.org/csv-cubed/resources/measures#people"
+            },
+            "data_type": "integer",
+            "unit": {
+                "label": "Number",
+                "from_existing": "http://qudt.org/vocab/unit/NUM"
+            }
+        }
+    }
+}
